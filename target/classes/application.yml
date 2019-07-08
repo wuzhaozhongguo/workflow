@@ -1,0 +1,44 @@
+spring:
+  liquibase:
+    enabled: true
+    change-log: classpath:META-INF/liquibase/activiti-app-db-changelog.xml
+  freemarker:
+    check-template-location: false
+
+  jpa:
+    properties:
+      hibernate:
+        cache:
+          use_second_level_cache: false
+    open-in-view: true
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      use-new-id-generator-mappings: false
+      
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  activiti:
+    check-process-definitions: false
+    
+  aop:
+    proxy-target-class: false
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://10.58.1.216:3306/workflow?characterEncoding=utf8&useSSL=false&allowMultiQueries=true
+    username: silkconnect
+    password: Syncs3cret
+
+server:
+  port: 8080
+  servlet:
+    context-path: "/wf"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
